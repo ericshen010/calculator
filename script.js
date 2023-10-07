@@ -5,9 +5,10 @@ let result = 0;
 
 // Checks if first number is negative 
 function display(number) {
-    if (input === '' && number === '-') 
-    {
-        input += '-';
+    if (input === '0' && number !== '.') {
+        input = number;
+    } else if (input === '' && number === '-') {
+        input = '-';
     } else {
         input += number;
     }
