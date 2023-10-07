@@ -5,7 +5,8 @@ let result = 0;
 
 // Checks if first number is negative 
 function display(number) {
-    if (input === '' && number === '-') {
+    if (input === '' && number === '-') 
+    {
         input += '-';
     } else {
         input += number;
@@ -13,30 +14,38 @@ function display(number) {
     newScreen();
 }
 // Selects and displays correct operator
-function operator(operator) {
-    if (input !== '') {
-        if (nowperator !== '') {
+function operator(operator) 
+{
+    if (input !== '') 
+    {
+        if (nowperator !== '') 
+        {
             calculate();
         }
         nowperator = operator;
         result = parseFloat(input);
         input = '';
         newScreen();
-    } else if (result !== 0) {
+    } 
+    else if (result !== 0) 
+    {
         nowperator = operator;
         newScreen();
     }
 }
 // Clears screen
-function wipeScreen() {
+function wipeScreen() 
+{
     input = '';
     nowperator = '';
     result = 0;
     newScreen();
 }
 // Calculates expressions
-function calculate() {
-    if (input !== '' || nowperator !== '') {
+function calculate()
+{
+    if (input !== '' || nowperator !== '') 
+    {
         const operand = parseFloat(input) || 0;
         switch (nowperator) {
             case '+':
@@ -49,9 +58,11 @@ function calculate() {
                 result *= operand;
                 break;
             case '/':
-                if (operand !== 0) {
+                if (operand !== 0) 
+                {
                     result /= operand;
-                } else {
+                } 
+                else {
                     alert('Sorry, no dividing by 0');
                     wipeScreen();
                     return;
@@ -66,6 +77,7 @@ function calculate() {
     }
     // Updates calculator screen
 }
-function newScreen() {
+function newScreen()
+ {
     document.getElementById('screen').innerText = result !== 0 ? result + nowperator + input : input;
 }
