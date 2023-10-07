@@ -1,70 +1,71 @@
-let currentInput = '';
-let currentOperator = '';
-let currentResult = 0;
+// Make variables
+let input = '';
+let nowperator = '';
+let result = 0;
 
 // Checks if first number is negative 
-function appendNumber(number) {
-    if (currentInput === '' && number === '-') {
-        currentInput += '-';
+function display(number) {
+    if (input === '' && number === '-') {
+        input += '-';
     } else {
-        currentInput += number;
+        input += number;
     }
-    updateScreen();
+    newScreen();
 }
 // Selects and displays correct operator
-function setOperator(operator) {
-    if (currentInput !== '') {
-        if (currentOperator !== '') {
+function operator(operator) {
+    if (input !== '') {
+        if (nowperator !== '') {
             calculate();
         }
-        currentOperator = operator;
-        currentResult = parseFloat(currentInput);
-        currentInput = '';
-        updateScreen();
-    } else if (currentResult !== 0) {
-        currentOperator = operator;
-        updateScreen();
+        nowperator = operator;
+        result = parseFloat(input);
+        input = '';
+        newScreen();
+    } else if (result !== 0) {
+        nowperator = operator;
+        newScreen();
     }
 }
 // Clears screen
-function clearScreen() {
-    currentInput = '';
-    currentOperator = '';
-    currentResult = 0;
-    updateScreen();
+function wipeScreen() {
+    input = '';
+    nowperator = '';
+    result = 0;
+    newScreen();
 }
 // Calculates expressions
 function calculate() {
-    if (currentInput !== '' || currentOperator !== '') {
-        const operand = parseFloat(currentInput) || 0;
-        switch (currentOperator) {
+    if (input !== '' || nowperator !== '') {
+        const operand = parseFloat(input) || 0;
+        switch (nowperator) {
             case '+':
-                currentResult += operand;
+                result += operand;
                 break;
             case '-':
-                currentResult -= operand;
+                result -= operand;
                 break;
             case '*':
-                currentResult *= operand;
+                result *= operand;
                 break;
             case '/':
                 if (operand !== 0) {
-                    currentResult /= operand;
+                    result /= operand;
                 } else {
-                    alert('Cannot divide by zero!');
-                    clearScreen();
+                    alert('Sorry, no dividing by 0');
+                    wipeScreen();
                     return;
                 }
                 break;
             default:
                 break;
         }
-        currentInput = '';
-        currentOperator = '';
-        updateScreen();
+        input = '';
+        nowperator = '';
+        newScreen();
     }
     // Updates calculator screen
 }
-function updateScreen() {
-    document.getElementById('screen').innerText = currentResult !== 0 ? currentResult + currentOperator + currentInput : currentInput;
+function newScreen() {
+    document.getElementById('screen').innerText = result !== 0 ? result + nowperator + input : input;
 }
