@@ -5,11 +5,16 @@ let result = 0;
 
 // Checks if first number is negative 
 function display(number) {
-    if (input === '0' && number !== '.') {
+    if (input === '0' && number !== '.') 
+    {
         input = number;
-    } else if (input === '' && number === '-') {
+    } 
+    else if (input === '' && number === '-')
+     {
         input = '-';
-    } else {
+    } 
+    else 
+    {
         input += number;
     }
     newScreen();
